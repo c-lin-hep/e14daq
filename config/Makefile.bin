@@ -1,0 +1,17 @@
+
+CC = g++
+
+CFLAGS = -O2 -Wall -fPIC
+ROOTFLAG = `root-config --libs` `root-config --cflags`
+
+
+PATHLIB = -L$(E14DAQLIB)/sources
+PATHINC = -I$(E14DAQLIB)/sources
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS) $(SRCS)
+	$(CC) $(CFLAGS) -o  $(TARGET) $(SRCS) $(PATHINC) $(PATHLIB) $(ROOTFLAG) -lE14DAQ
+
+clean:
+	rm -f $(TARGET)
